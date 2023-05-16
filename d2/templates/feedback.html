@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Feedback Page</title>
+	<link rel="stylesheet" href="{% static 'feedback.css' %}">
+    {% comment %} <link rel="stylesheet" href="{% static 'style.css' %}"> {% endcomment %}
+    <style>
+        button[type="submit"] {
+          background-color: #007bff;
+          color: #fff;
+          border: none;
+          border-radius: 4px;
+          padding: 10px 20px;
+          font-size: 16px;
+          cursor: pointer;
+          position: center
+        }
+  
+        button[type="submit"]:hover {
+          background-color: #1ea124;
+        }
+      </style>
+</head>
+<body>
+	<h1>Feedback Page</h1>
+
+    {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+  <form method="POST" action='{% url 'feedback' %}' >
+    {% csrf_token %}
+    <div class="form-group">
+       
+     {{ form.name.label_tag }}
+      {{ form.name }}
+    </div>
+    <div class="form-group">
+      {{ form.email.label_tag }}
+      {{ form.email }}
+    </div>
+    <div class="form-group">
+      {{ form.feedback.label_tag }}
+      {{ form.feedback }} 
+    </div>
+    <button type="submit">Submit</button>
+ 
+  </form>
+</body>
+</html>

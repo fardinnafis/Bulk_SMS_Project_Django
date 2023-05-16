@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+	
+  </head>
+  <body>
+    <div class="testbox">
+      <form action='{% url 'home' %}' method="POST">
+       {% csrf_token %} 
+        <div class="banner" style="background-color:rgb(0, 57, 179);">
+          <h1 style="color: #1ac436">Welcome <br> To <br> IGL_WEB</h1>
+          
+        </div>
+        <br/>
+        
+        <br/>
+        <fieldset>
+          <legend style="font-size: 23px"><b>Checking</b></legend>
+           <div class="colums">
+			<div class="item">
+				<label for="phone">Number<span>*</span></label>
+				<input id="phone" type="tel"   name="phone" />
+			  </div>
+
+			  <div class="item">
+				<label for="ID">Sender ID<span>*</span></label>
+				<input id="phone" type="id"   name="ID" />
+			  </div>  
+        <div class="item">
+          <label for="phone">API KEY<span>*</span></label>
+          <input id="CODE" type="tel"   name="text" />
+          </div>
+           
+
+ <div class="item">
+            <label for="address1">SMS<span>*</span></label>
+            <input id="SMS" type="text"   name="sms" />
+          </div>
+          
+          
+              
+            </div>
+          </div>
+                </fieldset>
+                       
+        <div class="btn-block">
+          <button type="submit" href="/" style="background:#00b33c";>Submit</button>
+        </div>
+        
+        <div style="text-align: center; color: blue">
+          {% for message in messages %}
+          <h3> {{message}} </h3>
+          {% endfor %}
+        </div> 
+      </form>
+      <div class="btn-block">
+        <button type="submit" class="btn btn-primary btn-block">
+          <a href="{% url 'signup' %}" class="btn-link" style="background:#00b33c";>Do You Have Any Account?</a>
+        </button>
+      <div class="btn-block">
+        <button type="submit" class="btn btn-primary btn-block">
+          <a href="{% url 'feedback' %}" class="btn-link" style="background:#00b33c";>Do You Have Any FeedBack?</a>
+        </button>
+      </div>
+      
+    </div>
+<script >
+	var a = document.getElementByID("fee").value;
+	var b = document.getElementByID("fee1").value;
+	var c = document.getElementByID("fee2").value;
+	var result = a+b+c;
+	function calcNumbers(){
+		document.getElementByID("result").innerHTML = result;
+	}
+</script>
+  </body>
+</html>
